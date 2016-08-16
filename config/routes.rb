@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'persons/profile'
 
+  resources :posts
+
   devise_for :users
   get 'persons/profile', as: 'user_root'
 
