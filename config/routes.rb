@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  get 'user/show'
+  get 'users/show'
 
   get 'persons/profile'
 
-  resources :posts
+  resources :posts do
+    collection do
+      get :get_all
+    end
+  end
 
   devise_for :users
   get 'persons/profile', as: 'user_root'

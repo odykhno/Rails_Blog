@@ -1,5 +1,7 @@
 <h1><%= "#{current_user.email} profile" %></h1>
-<%= link_to 'My Blog', controller: 'posts' %>
+<p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
+<p><%= link_to 'My Blog', controller: 'posts' %></p>
 <% if current_user.admin %>
-  <%= link_to 'All users',  %>
+  <p><%= link_to 'All users', users_show_path %></p>
+  <p><%= link_to 'All posts', get_all_posts_path %></p>
 <% end %>

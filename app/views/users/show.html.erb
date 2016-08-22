@@ -1,0 +1,31 @@
+<h1>All Users</h1>
+<table class = table>
+  <tr>
+    <th>Email</th>
+    <th>Admin</th>
+  </tr>
+
+  <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td>
+          <% unless user.admin %>
+            <label>
+              <%= check_box_tag :grant_admin %>
+              Grant admin
+            </label>
+          <% end %>
+        </td>
+        <td>
+          <% unless user == current_user %>
+            <label>
+              <%= check_box_tag :block_user %>
+              Block user
+            </label>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+
+</table>
