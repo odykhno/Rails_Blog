@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user/show'
+
   get 'persons/profile'
 
   resources :posts

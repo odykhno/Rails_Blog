@@ -1,2 +1,5 @@
 <h1><%= "#{current_user.email} profile" %></h1>
 <%= link_to 'My Blog', controller: 'posts' %>
+<% if current_user.admin %>
+  <%= link_to 'All users',  %>
+<% end %>
