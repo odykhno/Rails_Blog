@@ -1,4 +1,5 @@
 <h1>All Users</h1>
+
 <table class = table>
   <tr>
     <th>Email</th>
@@ -6,13 +7,18 @@
   </tr>
 
   <% @users.each do |user| %>
+      <%= form_tag url: 'users#show' do %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.admin %></td>
         <td>
           <% unless user.admin %>
             <label>
-              <%= check_box_tag :grant_admin %>
+              <%= check_box_tag :grant_admin, options = user.id %>
+              Grant admin
+            <% else %>
+              <%= check_box_tag :grant_admin, checked = true, options = user.id %>
+              <%= hidden_field_tag :grant_admin_hidden, options = user.id %>
               Grant admin
             </label>
           <% end %>
@@ -25,7 +31,12 @@
             </label>
           <% end %>
         </td>
+        <td>
+          <%= submit_tag %>
+        </td>
       </tr>
-  <% end %>
+      <% end %>
+<% end %>
 
 </table>
+

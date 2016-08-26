@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
+  post 'users/show', to: 'users#save'
+  # post 'users/show', to: :save
 
   get 'persons/profile'
 
