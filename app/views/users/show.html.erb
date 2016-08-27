@@ -4,6 +4,7 @@
   <tr>
     <th>Email</th>
     <th>Admin</th>
+    <th>Blocked</th>
   </tr>
 
   <% @users.each do |user| %>
@@ -11,22 +12,27 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.admin %></td>
+        <td><%= user.blocked %></td>
         <td>
-          <% unless user.admin %>
+          <% if user.admin && user != current_user %>
             <label>
-              <%= check_box_tag :grant_admin, options = user.id %>
-              Grant admin
-            <% else %>
               <%= check_box_tag :grant_admin, checked = true, options = user.id %>
               <%= hidden_field_tag :grant_admin_hidden, options = user.id %>
+              Grant admin
+            <% elsif user != current_user %>
+              <%= check_box_tag :grant_admin, options = user.id %>
               Grant admin
             </label>
           <% end %>
         </td>
         <td>
-          <% unless user == current_user %>
+          <% if user.blocked && user != current_user %>
             <label>
-              <%= check_box_tag :block_user %>
+              <%= check_box_tag :block_user, checked = true, options = user.id %>
+              <%= hidden_field_tag :block_user_hidden, options = user.id %>
+              Block user
+          <% elsif user != current_user %>
+              <%= check_box_tag :block_user, options = user.id %>
               Block user
             </label>
           <% end %>
