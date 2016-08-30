@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
   get 'users/show'
   post 'users/show', to: 'users#save'
-  # post 'users/show', to: :save
 
   get 'persons/profile'
 
   resources :posts do
+    resources :comments, only: [:create, :destroy]
+
     collection do
       get :get_all
     end

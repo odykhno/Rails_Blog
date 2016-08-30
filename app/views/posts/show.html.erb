@@ -8,5 +8,37 @@
   <%= @post.text %>
 </p>
 
+<p>
+  <%= form_for([@post, @post.comments.build]) do |f| %>
+      <%= f.text_field :text, placeholder: 'Comment..' %>
+      <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</p>
+
+<h2>Comments</h2>
+<table class='table'>
+  <thead>
+  <th>
+    Author
+  </th>
+  <th>
+    Comment
+  </th>
+  </thead>
+  <tbody>
+  <% @comments.each do |comment| %>
+      <% next unless comment.persisted? %>
+      <tr>
+        <td>
+          <%= comment.author %>
+        </td>
+        <td>
+          <%= comment.text %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_post_path(@post) %>
 <%= link_to 'Back', posts_path %>
