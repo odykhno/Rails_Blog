@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     collection do
       get :get_all
     end
+    member do
+      post :show, to: 'posts#save'
+    end
   end
 
   devise_for :users

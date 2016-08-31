@@ -7,6 +7,20 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def save
+    @posts = Post.all
+    if params[:moderation]
+      post = Post.find_by(id: params[:moderation].to_f)
+      post.moderation = true
+      post.save
+    elsif params[:moderation_hidden]
+      post = Post.find_by(id: params[:moderation_hidden].to_f)
+      post.moderation = false
+      post.save
+    end
+    render 'get_all'
+  end
+
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments

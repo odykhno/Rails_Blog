@@ -35,6 +35,11 @@
         <td>
           <%= comment.text %>
         </td>
+        <td>
+          <%= link_to 'Destroy Comment', [comment.post, comment],
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
   <% end %>
   </tbody>
