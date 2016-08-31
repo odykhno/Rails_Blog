@@ -6,20 +6,28 @@
     <th>Text</th>
   </tr>
 
-  <% unless @comments.nil? %>
+  <% unless @comments.empty? %>
     <% @comments.each do |comment| %>
-      <!--<%= form_tag url: 'posts#show' do %>-->
+      <%= form_tag url: 'posts#show' do %>
           <tr>
             <td><%= comment.author %></td>
             <td><%= comment.text %></td>
             <td><%= link_to 'Destroy', [comment.post, comment],
                             method: :delete,
                             data: { confirm: 'Are you sure?' } %></td>
-            <!--<td>-->
-              <!--<%= submit_tag %>-->
-            <!--</td>-->
+            <td>
+              <% unless comment.approved %>
+                <label>
+                  <%= check_box_tag :approved, options = comment.id %>
+                  Approve
+                </label>
+              <% end %>
+            </td>
+            <td>
+              <%= submit_tag %>
+            </td>
           </tr>
-      <!--<% end %>-->
+      <% end %>
     <% end %>
   <% else %>
     <h2>Nothing to approve</h2>

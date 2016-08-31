@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_filter :find_not_approved_comments, :only => [:show, :save]
+
   def create
     @post = Post.find(params[:post_id])
     # post_params.merge(user_id: current_user.id)
@@ -14,12 +16,36 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @posts = Post.find_by(moderation: true)
-    @comments = @posts.comments unless @posts.nil?
+  end
+
+  def save
+    if params[:approved]
+      comment = Comment.find_by(id: params[:approved].to_f)
+      comment.approved = true
+      comment.save
+    elsif params[:approved_hidden]
+      comment = Comment.find_by(id: params[:approved_hidden].to_f)
+      comment.approved = false
+      comment.save
+    end
+    render 'show'
   end
 
   private
   def comment_params
     params.require(:comment).permit(:text)
+  end
+
+  def find_not_approved_comments
+    @comments = []
+    posts = Post.where(moderation: true)
+    unless posts.nil?
+      posts.each do |post|
+        post.comments.where(approved: false).each do |comment|
+          @comments << comment
+        end
+      end
+    end
+    @comments
   end
 end
