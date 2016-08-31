@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'users/show', to: 'users#save'
 
   get 'persons/profile'
+  get 'comments/show'
 
   resources :posts do
     resources :comments, only: [:create, :destroy]

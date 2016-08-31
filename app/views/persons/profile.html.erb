@@ -4,4 +4,5 @@
 <% if current_user.admin %>
   <p><%= link_to 'All users', users_show_path %></p>
   <p><%= link_to 'All posts', get_all_posts_path %></p>
+  <p><%= link_to 'All comments to approve', comments_show_path %></p>
 <% end %>
