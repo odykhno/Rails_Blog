@@ -23,7 +23,10 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments
+    @comments = []
+    @post.comments.where(approved: true).each do |comment|
+      @comments << comment
+    end
   end
 
   def new

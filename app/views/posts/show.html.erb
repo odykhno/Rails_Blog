@@ -15,6 +15,10 @@
   <% end %>
 </p>
 
+<% if @post.moderation %>
+  <p>All new comments for this post need to be approved by admin</p>
+<% end %>
+
 <h2>Comments</h2>
 <table class='table'>
   <thead>
@@ -27,7 +31,7 @@
   </thead>
   <tbody>
   <% @comments.each do |comment| %>
-      <% next unless comment.persisted? %>
+    <% next unless comment.persisted? %>
       <tr>
         <td>
           <%= comment.author %>
