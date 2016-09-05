@@ -65,6 +65,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :all_tags) # all_tags - only for admins and authors
   end
 end
