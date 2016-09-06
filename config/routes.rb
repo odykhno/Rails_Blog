@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'comments/show'
   post 'comments/show', to: 'comments#save'
 
+  get 'tags/:tag', to: 'posts#index', as: "tag"
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
 

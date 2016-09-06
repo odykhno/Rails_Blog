@@ -13,7 +13,7 @@
     <p class="alert"><%= alert %></p>
 
     <% unless current_user.nil? %>
-      <h3><%= "You are logged in as " %> <b><%= "#{current_user.email}"%> </b></h3>
+      <h4><%= "You are logged in as " %> <b><%= "#{current_user.email}"%> </b></h4>
     <% end %>
 
     <%= yield %>

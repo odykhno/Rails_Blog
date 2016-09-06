@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   def index
-    @posts = current_user.posts
+    if params[:tag]
+      @posts = current_user.posts.tagged_with(params[:tag])
+    else
+      @posts = current_user.posts
+    end
   end
 
   def get_all
@@ -24,9 +28,14 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = []
-    @post.comments.where(approved: true).each do |comment|
-      @comments << comment
+    if @post.moderation == true
+      @post.comments.where(approved: true).each do |comment|
+        @comments << comment
+      end
+    else
+      @comments = @post.comments
     end
+    @comments = @comments.reverse
   end
 
   def new

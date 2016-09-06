@@ -1,12 +1,15 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
+<%= div_for @post do %>
+    <div class="large-12 columns border border-box glassy-bg mt pt">
+      <strong><%= h(@post.title) %></strong><br/>
+      <sup class="text-muted">From <%= time_ago_in_words(@post.created_at)%></sup><br/>
+      <div class="mb pb">
+        <%= h(@post.text) %>
+      </div>
+      <div class="tags">
+        <%=raw tag_links(@post.all_tags)%>
+      </div>
+    </div>
+<% end %>
 
 <p>
   <%= form_for([@post, @post.comments.build]) do |f| %>
