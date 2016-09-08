@@ -59,5 +59,8 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_post_path(@post) %>
+<% if current_user.admin || current_user.email == @post.user.email%>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>
+
 <%= link_to 'Back', :back %>
