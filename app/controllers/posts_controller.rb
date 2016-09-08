@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :if_blocked_user
+
   def index
     if params[:tag]
       @posts = current_user.posts.tagged_with(params[:tag])

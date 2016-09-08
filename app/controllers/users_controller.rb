@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :if_no_admin
-  # before_action :if_blocked_user
 
   def show
     @users = User.all

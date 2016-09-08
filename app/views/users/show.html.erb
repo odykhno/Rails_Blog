@@ -1,3 +1,5 @@
+<%= render 'layouts/link' %>
+
 <h1>All Users</h1>
 
 <table class = table>
@@ -37,9 +39,11 @@
             </label>
           <% end %>
         </td>
-        <td>
-          <%= submit_tag %>
-        </td>
+        <% unless user.email == current_user.email %>
+          <td>
+            <%= submit_tag %>
+          </td>
+      <% end %>
       </tr>
       <% end %>
 <% end %>
