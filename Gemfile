@@ -53,3 +53,8 @@ gem 'pry-rails'
 gem 'pry-nav'
 gem 'foundation-rails'
 gem 'record_tag_helper', '~> 1.0'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
