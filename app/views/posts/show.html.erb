@@ -1,3 +1,5 @@
+<%= render 'layouts/link' %>
+
 <%= div_for @post do %>
     <div class="large-12 columns border border-box glassy-bg mt pt">
       <strong><%= h(@post.title) %></strong><br/>
@@ -23,15 +25,19 @@
 <% end %>
 
 <h2>Comments</h2>
-<table class='table'>
+<% if @comments.empty? %>
+    <p>There are no comments to your post yet!</p>
+<% else %>
+  <table class='table'>
   <thead>
-  <th>
-    Author
-  </th>
-  <th>
-    Comment
-  </th>
+    <th>
+      Author
+    </th>
+    <th>
+      Comment
+    </th>
   </thead>
+<% end %>
   <tbody>
   <% @comments.each do |comment| %>
     <% next unless comment.persisted? %>

@@ -1,11 +1,17 @@
+<%= render 'layouts/link' %>
+
 <h1>Listing my posts</h1>
 
 <%= link_to 'New post', new_post_path %>
-<table class = table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
+<% if @posts.empty? %>
+  <p>There are no your posts yet!</p>
+<% else %>
+  <table class = table>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+    </tr>
+<% end %>
 
     <% @posts.each do |post| %>
       <tr>
