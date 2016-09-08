@@ -2,15 +2,15 @@ class PostsController < ApplicationController
   before_action :if_blocked_user
 
   def index
-    if params[:tag]
-      @posts = current_user.posts.tagged_with(params[:tag])
-    else
-      @posts = current_user.posts
-    end
+   @posts = current_user.posts
   end
 
   def get_all
-    @posts = Post.all
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all
+    end
   end
 
   def save
@@ -76,6 +76,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :text, :all_tags) # all_tags - only for admins and authors
+    params.require(:post).permit(:title, :text, :all_tags)
   end
 end

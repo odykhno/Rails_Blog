@@ -2,7 +2,8 @@
 
 <%= div_for @post do %>
     <div class="large-12 columns border border-box glassy-bg mt pt">
-      <strong><%= h(@post.title) %></strong><br/>
+      <p><%= h(@post.title) %></p><br/>
+      <strong><%= h(@post.user.email) %></strong><br/>
       <sup class="text-muted">From <%= time_ago_in_words(@post.created_at)%></sup><br/>
       <div class="mb pb">
         <%= h(@post.text) %>
@@ -58,12 +59,5 @@
   </tbody>
 </table>
 
-<div class="tags-cloud glassy-bg">
-  <h4>Tags Cloud</h4>
-  <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
-
 <%= link_to 'Edit', edit_post_path(@post) %>
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', :back %>

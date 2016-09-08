@@ -1,12 +1,13 @@
+<%= render 'layouts/link' %>
+
 <h1>Comments to be approved</h1>
 
+<% unless @comments.empty? %>
 <table class = table>
   <tr>
     <th>Author</th>
     <th>Text</th>
   </tr>
-
-  <% unless @comments.empty? %>
     <% @comments.each do |comment| %>
       <%= form_tag url: 'posts#show' do %>
           <tr>
