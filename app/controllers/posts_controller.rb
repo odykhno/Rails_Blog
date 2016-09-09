@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def get_all
+    binding.pry
     if params[:tag]
       @posts = Post.tagged_with(params[:tag])
     else

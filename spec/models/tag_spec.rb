@@ -28,13 +28,13 @@ RSpec.describe Tag, :type => :model do
     end
 
     it "returns list of all tags with name column" do
-      expect(@tags.first.name).to eq("name")
+      expect(@tags.first).to respond_to(:name)
       expect(@tags.second.name).to eq("Olena")
     end
-    #
-    # it "all others columns are absent" do
-    #   @tags.first should respond_to(:name)
-    #   # expect(@tags.first.created_at).to be_nil
-    # end
+
+    it "all others columns are absent" do
+      expect(@tags.first).not_to respond_to(:created_at)
+      expect(@tags.second).not_to respond_to(:updated_at)
+    end
   end
 end
