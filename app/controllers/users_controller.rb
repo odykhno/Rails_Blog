@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def save
     @users = User.all
-    # binding.pry
     if params[:grant_admin]
       user = User.find_by(id: params[:grant_admin].to_f)
       user.admin = true
