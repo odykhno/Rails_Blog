@@ -26,9 +26,30 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
 
-    # describe "POST #save" do
-    #
-    # end
+    describe "POST #save" do
+      it "updates page upon save" do
+        post :save
+        expect(response).to render_template("show")
+      end
+
+      describe "applies specified data" do
+        it "grants admin rights" do
+          post :save, params: { user: @user.admin = true }
+          sign_out @admin
+          sign_in @user
+          expect(response).to have_http_status(200)
+        end
+
+        it "blockes user" do
+          post :save, params: { user: @user.blocked = true }
+          sign_out @admin
+          sign_in @user
+          get :show
+          expect(response).to have_http_status(401)
+        end
+      end
+
+    end
   end
 
   describe "if current user doesn't have admin rights" do
@@ -38,17 +59,10 @@ RSpec.describe UsersController, :type => :controller do
       sign_in @user
     end
 
-    describe "GET #show" do
-      it "responds unsuccessfully with an HTTP 401 status code" do
-        get :show
-        expect(response).not_to be_success
-        expect(response).to have_http_status(401)
-      end
-
-      it "renders the unauthorised page" do
-        get :show
-        expect(response).to render_file('public/422.html')
-      end
+    it "GET #show responds unsuccessfully with an HTTP 401 status code" do
+      get :show
+      expect(response).not_to be_success
+      expect(response).to have_http_status(401)
     end
   end
 end
