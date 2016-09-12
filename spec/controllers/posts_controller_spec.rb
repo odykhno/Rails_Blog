@@ -4,6 +4,7 @@ RSpec.describe PostsController, :type => :controller do
   before(:each) do
     @user = create(:user) do |user|
       user.posts.create(attributes_for(:post1))
+      user.posts.first.moderation = true
     end
     @admin = create(:admin) do |admin|
       admin.posts.create(attributes_for(:post2))
@@ -48,10 +49,19 @@ RSpec.describe PostsController, :type => :controller do
   end
 
   # describe "POST #save" do
-  #   it "redirects to the new post" do
+  #   it "turn on/off moderation on specified post" do
+  #     @user.posts.create(attributes_for(:post2))
+  #     sign_out @user
+  #     sign_in @admin
+  #     post :save, params: { id: 3, post: { @user.posts.second.moderation => true } }
+  #     sign_out @admin
+  #     sign_in @user
+  #     @user.posts.second.comments.create(attributes_for(:comment1))
+  #     expect(@user.posts.second.comments.count).to eq(1)
+  #     expect(@user.posts.second.moderation).to be true
+  #     expect(@user.posts.second.comments.first.approved).to be false
   #
-  #     post :save, params: { id: 1, post: @user.posts.create(attributes_for(:post2)) }
-  #     expect(response).to render_template("show")
+  #     expect(response).to have_http_status(200)
   #   end
   # end
 
@@ -101,12 +111,7 @@ RSpec.describe PostsController, :type => :controller do
 
     it "updates page with all user posts" do
       delete :destroy, params: {id: 1}
-      # expect(response).to render_template("index")
-      response.should redirect_to (posts_path)
-
-      posts_path
+      expect(response).to redirect_to (posts_path)
     end
-
   end
-
 end
