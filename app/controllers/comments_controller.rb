@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :find_not_approved_comments, :only => [:show, :save]
+  before_action :find_not_approved_comments, :only => [:show, :save]
 
   def create
     @post = Post.find(params[:post_id])
