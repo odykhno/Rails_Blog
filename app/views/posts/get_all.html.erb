@@ -33,9 +33,11 @@
               </label>
           <% end %>
         </td>
-        <td>
-          <%= submit_tag %>
-        </td>
+        <% unless current_user == post.user %>
+          <td>
+            <%= submit_tag %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   <% end %>

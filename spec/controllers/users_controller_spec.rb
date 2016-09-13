@@ -29,7 +29,7 @@ RSpec.describe UsersController, :type => :controller do
     describe "POST #save" do
       it "updates page upon save" do
         post :save
-        expect(response).to render_template("show")
+        expect(response).to redirect_to(users_show_path)
       end
 
       # describe "applies specified data" do

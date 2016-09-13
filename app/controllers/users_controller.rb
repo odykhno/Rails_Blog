@@ -25,6 +25,6 @@ class UsersController < ApplicationController
       user.blocked = false
       user.save
     end
-    render 'show'
+    redirect_to users_show_path
   end
 end

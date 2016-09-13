@@ -29,7 +29,7 @@ describe "creating new post with comment", :type => :feature do
     expect(page).to have_selector('td', :text => 'The first comment')
   end
 
-  it "crestes tag cloud with appropriate search" do
+  it "creates tag cloud with appropriate search" do
     visit(post_path(@post))
     within("footer") do
       click_link 'name'

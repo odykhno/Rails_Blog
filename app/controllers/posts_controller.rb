@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       post.moderation = false
       post.save
     end
-    render 'get_all'
+    redirect_to get_all_posts_path
   end
 
   def show

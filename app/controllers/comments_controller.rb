@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
       comment.approved = false
       comment.save
     end
-    render 'show'
+    redirect_to comments_show_path
   end
 
   private
