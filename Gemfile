@@ -53,6 +53,7 @@ gem 'pry-rails'
 gem 'pry-nav'
 gem 'foundation-rails'
 gem 'record_tag_helper', '~> 1.0'
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 
 group :development, :test do
   gem 'rspec-rails'
