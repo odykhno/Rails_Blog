@@ -15,5 +15,5 @@
  *= require foundation_and_overrides
  *= require posts
  *= require tags
-
+ *= require page
  */
