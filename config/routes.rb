@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'users/show', to: 'users#save'
 
   get 'persons/profile'
+  patch 'persons/profile', to: 'persons#add_avatar'
 
   get 'comments/show'
   post 'comments/show', to: 'comments#save'
