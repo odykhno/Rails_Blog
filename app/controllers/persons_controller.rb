@@ -3,8 +3,12 @@ class PersonsController < ApplicationController
   end
 
   def add_avatar
-    current_user.avatar = params[:user][:avatar]
-    current_user.save
+    unless params[:user].nil?
+      current_user.avatar = params[:user][:avatar]
+      current_user.save
+    else
+      flash[:message] = "Please, attach the file"
+    end
     redirect_to persons_profile_path
   end
 end
