@@ -15,7 +15,7 @@
 <% end %>
 
 <p>
-  <%= form_for([@post, @post.comments.build]) do |f| %>
+  <%= form_for([@post, @post.comments.build], remote: true, format: :json) do |f| %>
       <%= f.text_field :text, placeholder: 'Comment..' %>
       <%= f.submit class: 'btn btn-primary' %>
   <% end %>
@@ -58,6 +58,8 @@
   <% end %>
   </tbody>
 </table>
+
+<%= render partial: "layouts/pagination", locals: { items: @comments } %>
 
 <% if current_user.admin || current_user.email == @post.user.email%>
   <%= link_to 'Edit', edit_post_path(@post) %>

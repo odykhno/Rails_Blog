@@ -3,8 +3,16 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params.merge(author: current_user.email))
-    redirect_to post_path(@post)
+    @comment = @post.comments.new(comment_params.merge(author: current_user.email))
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to post_path(@post) }
+        format.json { render json: @comment }
+      else
+        format.html { render :new }
+        format.json { render json: @comment.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
