@@ -2,14 +2,14 @@ class PostsController < ApplicationController
   before_action :if_blocked_user
 
   def index
-   @posts = current_user.posts.paginate(:page => params[:page])
+   @posts = current_user.posts.paginate(page: params[:page], per_page: 3)
   end
 
   def get_all
     if params[:tag]
-      @posts = Post.tagged_with(params[:tag]).paginate(:page => params[:page])
+      @posts = Post.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 3)
     else
-      @posts = Post.all.paginate(:page => params[:page])
+      @posts = Post.all.paginate(page: params[:page], per_page: 3)
     end
   end
 
