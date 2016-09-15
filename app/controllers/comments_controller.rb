@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   def show
+    @comments = @comments.paginate(:page => params[:page])
   end
 
   def save

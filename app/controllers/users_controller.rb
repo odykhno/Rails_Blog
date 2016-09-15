@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :if_no_admin
 
   def show
-    @users = User.all
+    @users = User.all.paginate(:page => params[:page])
   end
 
   def save

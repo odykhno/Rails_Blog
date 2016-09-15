@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many   :taggings
   has_many   :tags, through: :taggings
 
-  self.per_page = 3
+  WillPaginate.per_page = 3
 
   def all_tags=(names)
     self.tags = names.split(",").map do |name|

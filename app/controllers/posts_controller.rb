@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :if_blocked_user
 
   def index
-   @posts = current_user.posts
+   @posts = current_user.posts.paginate(:page => params[:page])
   end
 
   def get_all
