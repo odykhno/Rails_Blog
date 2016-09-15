@@ -6,6 +6,3 @@ $(function() {
         $('#comment_text').val('');
     });
 });
-
-// '<a href="http://google.ru">ссылка</a>'
-// "<%= link_to 'Destroy Comment', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } %>"

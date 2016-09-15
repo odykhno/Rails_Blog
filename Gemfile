@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -45,12 +46,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'pry-rails'
-gem 'pry-nav'
 gem 'foundation-rails'
 gem 'record_tag_helper', '~> 1.0'
 gem 'paperclip', '~> 5.0.0'
@@ -62,3 +63,5 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'capybara'
 end
+
+gem 'rails_12factor', group: :production
