@@ -35,9 +35,8 @@ class PostsController < ApplicationController
         @comments << comment
       end
     else
-      @comments = @post.order_comments # check!!!
+      @comments = @post.order_comments
     end
-    # @comments = @comments.reverse
     @comments = @comments.paginate(page: params[:page], per_page: 3)
   end
 
