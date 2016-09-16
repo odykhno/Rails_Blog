@@ -6,6 +6,9 @@
       <p><%= f.submit "Change avatar", class: "button" %></p>
       <p><%= flash[:message] %></p>
     <% end %>
+<% elsif current_user.picture %>
+    <%= image_tag current_user.picture %>
+<% else %>
   <p>You can load avatar for your profile here</p>
   <%= form_for current_user, url: persons_profile_path, html: { multipart: true } do |f| %>
     <%= f.file_field :avatar %>
@@ -14,7 +17,7 @@
   <% end %>
 <% end %>
 
-<h1><%= "#{current_user.email} profile" %></h1>
+<h1><%= "#{current_user.name || current_user.email} profile" %></h1>
 
 <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
 
