@@ -6,7 +6,11 @@ class Tag < ApplicationRecord
   #   self.select("name, count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
   # end
 
+  # def self.counts
+  #   Tag.select("tags.id, tags.name,count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
+  # end
+
   def self.counts
-    Tag.select("tags.id, tags.name,count(taggings.tag_id) as count").joins(:taggings).group("taggings.tag_id")
+    Tag.select("tags.name,count(taggings.tag_id) as count").joins(:taggings).group("tags.id, taggings.tag_id")
   end
 end
