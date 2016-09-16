@@ -6,7 +6,6 @@
       <p><%= f.submit "Change avatar", class: "button" %></p>
       <p><%= flash[:message] %></p>
     <% end %>
-<% else %>
   <p>You can load avatar for your profile here</p>
   <%= form_for current_user, url: persons_profile_path, html: { multipart: true } do |f| %>
     <%= f.file_field :avatar %>

@@ -1,0 +1,14 @@
+development:
+  facebook:
+    key: '1436907399657882'
+    secret: '279d5b277db93ec751a5197789ccd28d'
+
+test:
+  facebook:
+      key: '1436907399657882'
+      secret: '279d5b277db93ec751a5197789ccd28d'
+
+production:
+  facebook:
+      key: '1436907399657882'
+      secret: '279d5b277db93ec751a5197789ccd28d'

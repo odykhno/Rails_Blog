@@ -36,6 +36,11 @@ gem 'bootstrap-sass', '2.3.2.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'capybara'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -55,13 +60,7 @@ gem 'foundation-rails'
 gem 'record_tag_helper', '~> 1.0'
 gem 'paperclip', '~> 5.0.0'
 gem 'will_paginate', '~> 3.1.0'
-
-group :development, :test do
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'rails-controller-testing'
-  gem 'capybara'
-  gem 'sqlite3'
-end
+gem 'omniauth-facebook'
+gem 'settingslogic'
 
 gem 'rails_12factor', group: :production
