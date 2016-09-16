@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params.merge(author: current_user.email))
+    @comment = @post.comments.new(comment_params.merge(author: user_email_or_name(current_user)))
     respond_to do |format|
       if @comment.save
         format.html { redirect_to post_path(@post) }

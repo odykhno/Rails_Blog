@@ -2,13 +2,22 @@ development:
   facebook:
     key: '1436907399657882'
     secret: '279d5b277db93ec751a5197789ccd28d'
+  vkontakte:
+    key: '5631405'
+    secret: 'I5B0yaPQAleWtd2xH9ks'
 
 test:
   facebook:
-      key: '1436907399657882'
-      secret: '279d5b277db93ec751a5197789ccd28d'
+    key: '1436907399657882'
+    secret: '279d5b277db93ec751a5197789ccd28d'
+  vkontakte:
+    key: '5631405'
+    secret: 'I5B0yaPQAleWtd2xH9ks'
 
 production:
   facebook:
-      key: '1436907399657882'
-      secret: '279d5b277db93ec751a5197789ccd28d'
+    key: '1436907399657882'
+    secret: '279d5b277db93ec751a5197789ccd28d'
+  vkontakte:
+    key: '5631405'
+    secret: 'I5B0yaPQAleWtd2xH9ks'

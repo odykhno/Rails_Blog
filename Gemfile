@@ -61,6 +61,7 @@ gem 'record_tag_helper', '~> 1.0'
 gem 'paperclip', '~> 5.0.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'
 gem 'settingslogic'
 
 gem 'rails_12factor', group: :production

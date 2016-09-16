@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     @user.update(picture: auth_hash['info']['image'],
                  name: auth_hash['info']['name'],
-                 email: auth_hash['info']['email'])
+                 email: auth_hash['info']['email'] || "wrong@mail.ru")
     sign_in @user
     redirect_to persons_profile_path
   end

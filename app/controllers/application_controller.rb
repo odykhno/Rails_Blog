@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
   def if_blocked_user
     render(file: 'public/422.html', status: :blocked) if current_user.blocked
   end
+
+  def user_email_or_name(user)
+    user.email == "wrong@mail.ru" ? user.name : user.email
+  end
 end

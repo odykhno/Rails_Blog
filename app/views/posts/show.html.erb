@@ -3,7 +3,7 @@
 <%= div_for @post do %>
     <div class="large-12 columns border border-box glassy-bg mt pt">
       <p><%= h(@post.title) %></p><br/>
-      <strong><%= h(@post.user.email) %></strong><br/>
+      <strong><%= h(user_email_or_name(@post.user)) %></strong><br/>
       <sup class="text-muted">From <%= time_ago_in_words(@post.created_at)%></sup><br/>
       <div class="mb pb">
         <%= h(@post.text) %>
@@ -61,7 +61,7 @@
 
 <%= render partial: "layouts/pagination", locals: { items: @comments } %>
 
-<% if current_user.admin || current_user.email == @post.user.email%>
+<% if current_user.admin || user_email_or_name(current_user) == user_email_or_name(@post.user) %>
   <%= link_to 'Edit', edit_post_path(@post) %>
 <% end %>
 

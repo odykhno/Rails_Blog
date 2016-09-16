@@ -4,7 +4,7 @@
 
 <table class = table>
   <tr>
-    <th>Email</th>
+    <th>Email or name for VK users</th>
     <th>Admin</th>
     <th>Blocked</th>
   </tr>
@@ -12,7 +12,7 @@
   <% @users.each do |user| %>
       <%= form_tag url: 'users#show' do %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= user_email_or_name(user) %></td>
         <td><%= user.admin %></td>
         <td><%= user.blocked %></td>
         <td>
@@ -39,7 +39,7 @@
             </label>
           <% end %>
         </td>
-        <% unless user.email == current_user.email %>
+        <% unless user_email_or_name(user) == user_email_or_name(current_user) %>
           <td>
             <%= submit_tag %>
           </td>
