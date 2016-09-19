@@ -1,5 +1,13 @@
 <%= render 'layouts/link' %>
 
+<p>Search post</p>
+<%= search_form_for @q, url: get_all_posts_path do |f| %>
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Cancel search', get_all_posts_path %>
+
 <h1>Listing all posts</h1>
 
 <table class = table>
@@ -45,4 +53,6 @@
 
 </table>
 
-<%= render partial: "layouts/pagination", locals: { items: @posts } %>
+<% if @pagination_needed %>
+  <%= render partial: "layouts/pagination", locals: { items: @posts } %>
+<% end %>

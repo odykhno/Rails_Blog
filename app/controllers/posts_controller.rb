@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :if_blocked_user
+  before_filter :set_search
 
   def index
    @posts = current_user.posts.paginate(page: params[:page], per_page: 3)
@@ -8,7 +9,12 @@ class PostsController < ApplicationController
   def get_all
     if params[:tag]
       @posts = Post.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 3)
+    elsif params[:q]
+      @q = Post.ransack(params[:q])
+      @posts = @q.result(distinct: true)
+      @pagination_needed = false
     else
+      @pagination_needed = true
       @posts = Post.all.paginate(page: params[:page], per_page: 3)
     end
   end

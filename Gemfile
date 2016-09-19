@@ -63,5 +63,6 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'settingslogic'
+gem 'ransack'
 
 gem 'rails_12factor', group: :production
