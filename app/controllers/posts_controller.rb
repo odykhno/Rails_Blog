@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :if_blocked_user
   before_filter { |c| c.set_search Post }
+  # before_filter { |c| c.set_search Comment } #, :only => :show
 
   def index
    @posts = current_user.posts.paginate(page: params[:page], per_page: 3)
@@ -41,6 +42,16 @@ class PostsController < ApplicationController
         @comments << comment
       end
     else
+
+      # if params[:q]
+      #   @q = @post.comments.ransack(params[:q])
+      #   @comments = @q.result(distinct: true)
+      #   @pagination_needed = false
+      # else
+      #   @pagination_needed = true
+      #   # @comments = @comments.paginate(page: params[:page], per_page: 3)
+      # end
+
       @comments = @post.order_comments
     end
     @comments = @comments.paginate(page: params[:page], per_page: 3)

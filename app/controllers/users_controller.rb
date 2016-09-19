@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     else
       @pagination_needed = true
       @users = User.all.paginate(page: params[:page], per_page: 3)
-      end
+    end
   end
 
 
