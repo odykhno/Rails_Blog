@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     user.email == "wrong@mail.ru" ? user.name : user.email
   end
 
-  def set_search
-    @q = Post.search(params[:q])
+  def set_search(class_name)
+    @q = class_name.search(params[:q])
   end
 end

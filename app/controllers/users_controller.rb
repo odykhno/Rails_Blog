@@ -1,9 +1,18 @@
 class UsersController < ApplicationController
   before_action :if_no_admin
+  before_filter { |c| c.set_search User }
 
   def show
-    @users = User.all.paginate(page: params[:page], per_page: 3)
+    if params[:q]
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
+      @pagination_needed = false
+    else
+      @pagination_needed = true
+      @users = User.all.paginate(page: params[:page], per_page: 3)
+      end
   end
+
 
   def save
     @users = User.all

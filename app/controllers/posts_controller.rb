@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :if_blocked_user
-  before_filter :set_search
+  before_filter { |c| c.set_search Post }
 
   def index
    @posts = current_user.posts.paginate(page: params[:page], per_page: 3)
