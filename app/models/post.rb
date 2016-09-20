@@ -1,4 +1,21 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  text       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  moderation :boolean          default(FALSE)
+#  slug       :string
+#
+
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   belongs_to :user
   has_many   :comments
   has_many   :order_comments, -> { order('created_at desc') }, class_name: Comment

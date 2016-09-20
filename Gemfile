@@ -64,5 +64,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-vkontakte'
 gem 'settingslogic'
 gem 'ransack'
+gem 'friendly_id', '~> 5.1.0'
+gem 'annotate'
 
 gem 'rails_12factor', group: :production
