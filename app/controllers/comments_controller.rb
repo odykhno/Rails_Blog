@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :find_not_approved_comments, :only => [:show, :save]
 
   def create
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
     @comment = @post.comments.new(comment_params.merge(author: user_email_or_name(current_user)))
     respond_to do |format|
       if @comment.save
@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
+    CommentMailer.approve(@comment).deliver_now if @post.moderation == true
   end
 
   def destroy
