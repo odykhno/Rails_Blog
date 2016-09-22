@@ -13,4 +13,12 @@
 
 class Comment < ApplicationRecord
   belongs_to :post
+
+  after_create :publish_comment
+
+  private
+
+  def publish_comment
+    Pusher.trigger('comments', 'new', self.as_json)
+  end
 end
