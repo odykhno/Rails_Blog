@@ -15,7 +15,7 @@
 <% end %>
 
 <p>
-  <%= form_for([@post, @post.comments.build], remote: true, format: :json) do |f| %>
+  <%= form_for([@post, @post.comments.build], remote: true) do |f| %>
       <%= f.text_field :text, placeholder: 'Comment..' %>
       <%= f.submit class: 'btn btn-primary' %>
   <% end %>
@@ -29,6 +29,7 @@
 <% if @comments.empty? %>
     <p>There are no comments to your post yet!</p>
 <% else %>
+  <div id='comments_wrapper'>
   <table class='table'>
   <thead>
     <th>
@@ -58,6 +59,7 @@
   <% end %>
   </tbody>
 </table>
+</div>
 
 <%= render partial: "layouts/pagination", locals: { items: @comments } %>
 
