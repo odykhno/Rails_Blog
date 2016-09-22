@@ -30,7 +30,7 @@
     <p>There are no comments to your post yet!</p>
 <% else %>
   <div id='comments_wrapper'>
-  <table class='table'>
+  <table id='post_comments_<%= @post.id %>' class='table'>
   <thead>
     <th>
       Author
