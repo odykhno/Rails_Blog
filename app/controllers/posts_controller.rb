@@ -65,7 +65,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to @post
     else
@@ -76,8 +75,17 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.friendly.find(params[:id])
     @post.destroy
-
     redirect_to posts_path
+  end
+
+  def like_or_dislike
+    @post = Post.friendly.find(params[:like])
+    likes_count = @post.get_likes.size
+    @post.liked_by current_user
+    if @post.get_likes.size == likes_count
+      @post.unliked_by current_user
+    end
+    redirect_to get_all_posts_path
   end
 
   private

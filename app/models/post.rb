@@ -16,6 +16,8 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  acts_as_votable
+
   belongs_to :user
   has_many   :comments
   has_many   :order_comments, -> { order('created_at desc') }, class_name: Comment

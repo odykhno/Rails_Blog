@@ -23,6 +23,13 @@
         <td><%= user_email_or_name(post.user) %></td>
         <td><%= post.title %></td>
         <td><%= post.text %></td>
+        <td>
+          <%= form_tag url: posts_get_all_path do %>
+              <%= hidden_field_tag :like, options = post.id %>
+              <%= submit_tag 'Like' %>
+          <% end %>
+          (<%= post.get_likes.size %>)
+        </td>
         <td><%= link_to 'Show', post_path(post) %></td>
         <% if current_user.admin %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'posts#get_all', as: "tag"
 
+  post 'posts/get_all', to: 'posts#like_or_dislike'
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
 
