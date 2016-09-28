@@ -26,7 +26,9 @@
         <td>
           <%= form_tag url: posts_get_all_path do %>
               <%= hidden_field_tag :like, options = post.id %>
-              <%= submit_tag 'Like' %>
+              <%= button_tag(type: 'submit') do %>
+                 <% content_tag(:font, 'Like/Unlike', color: 'grey') %>
+              <% end %>
           <% end %>
           (<%= post.get_likes.size %>)
         </td>
