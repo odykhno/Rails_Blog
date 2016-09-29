@@ -24,11 +24,10 @@
         <td><%= post.title %></td>
         <td><%= post.text %></td>
         <td>
-          <%= form_tag url: posts_get_all_path do %>
-              <%= hidden_field_tag :like, options = post.id %>
-              <%= button_tag(type: 'submit') do %>
-                 <% content_tag(:font, 'Like/Unlike', color: 'grey') %>
-              <% end %>
+          <% unless post.votes_for.up.by_type(User).voters.include?(current_user) %>
+            <%= link_to 'Like', like_post_path(post), method: :put %>
+          <% else %>
+            <%= link_to 'Unlike', unlike_post_path(post), method: :put %>
           <% end %>
           (<%= post.get_likes.size %>)
         </td>

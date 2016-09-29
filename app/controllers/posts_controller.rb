@@ -30,7 +30,7 @@ class PostsController < ApplicationController
       post.moderation = false
       post.save
     end
-    redirect_to get_all_posts_path
+    redirect_to :back
   end
 
   def show
@@ -78,14 +78,16 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  def like_or_dislike
-    @post = Post.friendly.find(params[:like])
-    likes_count = @post.get_likes.size
+  def like
+    @post = Post.friendly.find(params[:id])
     @post.liked_by current_user
-    if @post.get_likes.size == likes_count
-      @post.unliked_by current_user
-    end
-    redirect_to get_all_posts_path
+    redirect_to :back
+  end
+
+  def unlike
+    @post = Post.friendly.find(params[:id])
+    @post.unliked_by current_user
+    redirect_to :back
   end
 
   private

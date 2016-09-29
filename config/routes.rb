@@ -13,8 +13,6 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'posts#get_all', as: "tag"
 
-  post 'posts/get_all', to: 'posts#like_or_dislike'
-
   resources :posts do
     resources :comments, only: [:create, :destroy]
 
@@ -22,6 +20,8 @@ Rails.application.routes.draw do
       get :get_all
     end
     member do
+      put :like, to: 'posts#like'
+      put :unlike, to: 'posts#unlike'
       post :show, to: 'posts#save'
     end
   end
