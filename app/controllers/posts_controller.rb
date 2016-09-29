@@ -75,7 +75,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.friendly.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to :back
   end
 
   def like

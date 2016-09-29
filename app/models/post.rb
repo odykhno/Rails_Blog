@@ -21,7 +21,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many   :comments
   has_many   :order_comments, -> { order('created_at desc') }, class_name: Comment
-  has_many   :taggings
+  has_many   :taggings, :dependent => :delete_all
   has_many   :tags, through: :taggings
 
   def all_tags=(names)
