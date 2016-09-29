@@ -16,8 +16,8 @@ test:
 
 production:
   facebook:
-    key: '1436907399657882'
-    secret: '279d5b277db93ec751a5197789ccd28d'
+    key: '678754838948998'
+    secret: '1d725adf53d361e7d73b73f186a600e4'
   vkontakte:
     key: '5631405'
     secret: 'I5B0yaPQAleWtd2xH9ks'
