@@ -69,4 +69,8 @@ gem 'annotate'
 gem 'pusher'
 gem 'acts_as_votable', '~> 0.10.0'
 
-gem 'rails_12factor', group: :production
+
+group :production do
+  gem 'rails_12factor'
+  gem 'rest-client'
+end
