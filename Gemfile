@@ -68,6 +68,7 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'annotate'
 gem 'pusher'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'faker'
 
 
 group :production do

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_email_or_name(user)
-    user.email == "wrong@mail.ru" ? user.name : user.email
+    user.provider == "vkontakte" ? user.name : user.email
   end
 
   def set_search(class_name)
