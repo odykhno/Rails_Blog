@@ -10,6 +10,7 @@ module Api
     end
 
     def show
+      @post = Post.friendly.find(params[:id])
       @comments = @post.order_comments
       render :show
     end
