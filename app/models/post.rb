@@ -24,6 +24,8 @@ class Post < ApplicationRecord
   has_many   :taggings, :dependent => :delete_all
   has_many   :tags, through: :taggings
 
+  validates :title, :user_id, :text, presence: true
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
       Tag.where(name: name.strip).first_or_create!

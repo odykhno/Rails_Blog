@@ -14,6 +14,8 @@
 class Comment < ApplicationRecord
   belongs_to :post
 
+  validates :text, presence: true
+
   after_create :publish_comment
 
   private
