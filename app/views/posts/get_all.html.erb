@@ -34,7 +34,7 @@
                 <i class="glyphicon glyphicon-thumbs-down"></i>
               <% end %>
           <% end %>
-          (<%= post.get_likes.size %>)
+          <span class="badge"><%= post.get_likes.size %></span>
         </td>
         <td><%= link_to 'Show', post_path(post) %></td>
         <% if current_user.admin %>
