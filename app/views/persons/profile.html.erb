@@ -4,7 +4,9 @@
     <%= form_for current_user, url: persons_profile_path, html: { multipart: true } do |f| %>
       <%= f.file_field :avatar %>
       <p><%= f.submit "Change avatar", class: "button" %></p>
-      <p><%= flash[:message] %></p>
+      <% if flash[:message] %>
+        <p class="alert alert-warning"><%= flash[:message] %></p>
+      <% end %>
     <% end %>
 <% elsif current_user.picture %>
     <%= image_tag current_user.picture %>
@@ -13,7 +15,6 @@
   <%= form_for current_user, url: persons_profile_path, html: { multipart: true } do |f| %>
     <%= f.file_field :avatar %>
     <p><%= f.submit "Add avatar", class: "button" %></p>
-    <p><%= flash[:notice] %></p>
   <% end %>
 <% end %>
 

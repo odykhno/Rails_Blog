@@ -10,8 +10,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% elsif alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
 
     <% unless current_user.nil? %>
       <h5><%= "You are logged in as " %> <b><%= "#{user_email_or_name(current_user)}"%> </b></h5>
