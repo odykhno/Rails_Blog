@@ -17,7 +17,6 @@
     <% end %>
 
     <% unless current_user.nil? %>
-      <h5><%= "You are logged in as " %> <b><%= "#{user_email_or_name(current_user)}"%> </b></h5>
       <% if current_user.blocked %>
         <h4>Admin has blocked you. Please, make a request to him to solve the problem with access</h4>
       <% end %>
