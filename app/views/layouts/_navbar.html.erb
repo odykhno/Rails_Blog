@@ -2,11 +2,14 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <p class="navbar-text"><%= "#{user_email_or_name(current_user)}" %></p>
+      <% if current_user.picture || current_user.avatar_file_name %>
+          <%= image_tag current_user.picture || current_user.avatar.url(:thumb) %>
+      <% end %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="glyphicon glyphicon-log-out"> Sign out</i>
+          <i class="glyphicon glyphicon-log-out"></i>
         <% end %>
         </li>
         <% unless current_user.blocked %>
