@@ -13,16 +13,16 @@ Rails.application.routes.draw do
 
   get 'tags/:tag', to: 'posts#get_all', as: "tag"
 
-  namespace :api, defaults: { format: :json } do
-    resources :posts, only: [:index, :show, :create, :update, :destroy] do
-    end
-
-    resources :users, only: [] do
-      collection do
-        post :sign_in
-      end
-    end
-  end
+  # namespace :api, defaults: { format: :json } do
+  #   resources :posts, only: [:index, :show, :create, :update, :destroy] do
+  #   end
+  #
+  #   resources :users, only: [] do
+  #     collection do
+  #       post :sign_in
+  #     end
+  #   end
+  # end
 
   resources :posts do
     resources :comments, only: [:create, :destroy]
@@ -42,4 +42,6 @@ Rails.application.routes.draw do
 
   root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  mount Blog::Api => '/'
 end

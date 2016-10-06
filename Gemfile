@@ -71,6 +71,9 @@ gem 'annotate'
 gem 'pusher'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'faker'
+gem 'grape'
+gem 'hashie-forbidden_attributes'
+gem 'grape-entity'
 
 
 group :production do
