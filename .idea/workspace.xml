@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="707eae36-16cd-44c4-b9eb-7a1eb50147a1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/application.rb" afterPath="$PROJECT_DIR$/config/application.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/api/entities/post_entity.rb" afterPath="$PROJECT_DIR$/app/api/entities/post_entity.rb" />
     </list>
     <ignored path="blog.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -96,7 +92,7 @@
         <entry file="file://$PROJECT_DIR$/app/api/entities/post_entity.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
-              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+              <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -792,15 +788,15 @@
       <workItem from="1475479675691" duration="13519000" />
       <workItem from="1475565497073" duration="13245000" />
       <workItem from="1475658798196" duration="9566000" />
-      <workItem from="1475746408973" duration="6222000" />
+      <workItem from="1475746408973" duration="6691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="327914000" />
+    <option name="totallyTimeSpent" value="328383000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17524981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1203,7 +1199,7 @@
     <entry file="file://$PROJECT_DIR$/app/api/entities/post_entity.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
-          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <caret line="1" column="49" selection-start-line="1" selection-start-column="49" selection-end-line="1" selection-end-column="49" />
           <folding />
         </state>
       </provider>
