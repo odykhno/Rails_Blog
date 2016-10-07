@@ -17,7 +17,6 @@
 #  updated_at             :datetime         not null
 #  admin                  :boolean          default(FALSE)
 #  blocked                :boolean          default(FALSE)
-#  avatar                 :boolean          default(FALSE)
 #  avatar_file_name       :string
 #  avatar_content_type    :string
 #  avatar_file_size       :integer
@@ -33,8 +32,14 @@ class User < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   has_many :posts
+  has_many :sessions
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def generate_session_token!
+    sessions.create.token
+  end
 end

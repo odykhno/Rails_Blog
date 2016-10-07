@@ -1,5 +1,5 @@
 class PostEntity < Grape::Entity
-  format_with(:iso_timestamp) { |dt| dt.iso8601 }
+  format_with(:iso_timestamp) { |dt| dt.to_i }
 
   expose :id, :title, :text
 

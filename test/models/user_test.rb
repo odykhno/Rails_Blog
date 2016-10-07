@@ -17,7 +17,6 @@
 #  updated_at             :datetime         not null
 #  admin                  :boolean          default(FALSE)
 #  blocked                :boolean          default(FALSE)
-#  avatar                 :boolean          default(FALSE)
 #  avatar_file_name       :string
 #  avatar_content_type    :string
 #  avatar_file_size       :integer

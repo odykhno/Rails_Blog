@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926084732) do
+ActiveRecord::Schema.define(version: 20161007073455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 20160926084732) do
     t.boolean  "moderation", default: false
     t.string   "slug"
     t.index ["slug"], name: "index_posts_on_slug", unique: true, using: :btree
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id", using: :btree
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -105,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160926084732) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
+  add_foreign_key "sessions", "users"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
 end
