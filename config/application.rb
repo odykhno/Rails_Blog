@@ -16,5 +16,10 @@ module Blog
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    config.middleware.insert_after ActionDispatch::Flash, Warden::Manager do |manager|
+      manager.failure_app = GrapeTokenAuth::UnauthorizedMiddleware
+      manager.default_scope = :user
+    end
   end
 end

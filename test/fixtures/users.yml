@@ -25,6 +25,7 @@
 #  provider_id            :string
 #  picture                :text
 #  name                   :string
+#  tokens                 :text
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -25,9 +25,12 @@
 #  provider_id            :string
 #  picture                :text
 #  name                   :string
+#  tokens                 :text
 #
 
 class User < ApplicationRecord
+  include GrapeTokenAuth::ActiveRecord::TokenAuth
+
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 

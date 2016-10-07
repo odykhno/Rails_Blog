@@ -25,6 +25,7 @@
 #  provider_id            :string
 #  picture                :text
 #  name                   :string
+#  tokens                 :text
 #
 
 require 'test_helper'

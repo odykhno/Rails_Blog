@@ -74,6 +74,7 @@ gem 'faker'
 gem 'grape'
 gem 'hashie-forbidden_attributes'
 gem 'grape-entity'
+gem 'grape_token_auth'
 
 
 group :production do
